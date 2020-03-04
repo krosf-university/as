@@ -42,5 +42,5 @@ grep 'nologin\|false' /etc/passwd -c
 ### Mostrar el tipo de inicio de sesión de los usuarios
 
 ```sh
-awk -F':' '{ print $7}' /etc/passwd | sort | uniq -c
+awk -F':' '{ print $7}' /etc/passwd | sort | uniq -c | sort -n
 ```
