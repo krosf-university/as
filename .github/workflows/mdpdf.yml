@@ -32,5 +32,11 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Commit CHANGELOG.md
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add CHANGELOG.md
           git commit -m "chore: release v{{ steps.get_version.outputs.VERSION }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
