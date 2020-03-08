@@ -1,0 +1,36 @@
+name: mdpdf
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  mdpdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: yarn global add mdpdf conventional-changelog-cli
+      - name: Convert to pdf
+        run: mdpdf README.md
+      - name: Generate CHANGELOG.md
+        run: conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: README.pdf
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Commit CHANGELOG.md
+        run: |
+          git add CHANGELOG.md
+          git commit -m "chore: release v{{ steps.get_version.outputs.VERSION }}"
