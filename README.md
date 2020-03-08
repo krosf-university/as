@@ -87,3 +87,84 @@ sudo useradd -G root antonio
 ```
 
 ## /proc
+
+### Identificar tres archivos y explicar su contenido.
+* `/proc/meminfo`
+  * Nos informa sobre la memoria del sistema
+* `/proc/version`
+  * Nos informa sobre la version actual del kernel, del gcc y la distribucion linux
+* `/proc/filesystems`
+  * Nos informa sobre los sistemas de archivos que el kernel soporta
+
+### Identificar al menos dos archivos que permitan escritura.
+
+* /proc/sys/kernel/hostname
+  * Modifica el hostname
+
+* /proc/sys/net/ipv4/ip_forward
+  * Modifica el binario ip_forward
+
+## Bash scripting
+
+### Realizar un programa que permita cambiar el nombre de los archivo de un directorio
+
+```sh
+#!/bin/sh
+
+DIRECTORY="${1%/}"
+PAD_FORMAT="%05g"
+
+[[ -d $DIRECTORY ]] || { echo "🚨  The argument should be an directory"; exit 2; }
+
+sequence=0
+
+for file in `find $DIRECTORY -type f -maxdepth 1`; do
+  filename=$(basename -- "$file")
+  extension="${filename##*.}"
+  filename="${file%.*}"
+  newname="$DIRECTORY/`seq -f $PAD_FORMAT $sequence $sequence`.$extension"
+  mv "$file" "$newname"
+  let sequence=sequence+1
+done
+
+```
+
+### Se pide realizar un programa que realice una copia de los directorios que cuelguen de `/importante/` en `media/backup`
+
+```sh
+#!/bin/sh
+
+DIR_PATH="/importante"
+DIR_BACKUP="/media/backup"
+
+for dir in `find $DIR_PATH -type d -maxdepth 1 ! -path "."`; do
+  dirname=$(basename -- "$dir")
+  compressname="$DIR_BACKUP/$dirname`date "+_%Y%m%d"`.tgz"
+  tar -czvf $compressname $dir
+done
+```
+
+### Proponer una modificación al programa anterior, de tal modo de que para cada directorio se guarden sólo los 5 últimos ficheros
+
+```sh
+#!/bin/sh
+
+DIR_PATH="$1"
+DIR_BACKUP="$HOME/tests"
+
+for dir in `find $DIR_PATH -type d -maxdepth 1 ! -path "."`; do
+  dirname=$(basename -- "$dir")
+  FOUND=`find $DIR_BACKUP -name "$dirname""_*.tgz" | sort`
+  COPIES=`echo $FOUND | wc -l`
+  [[ COPIES -eq 5 ]] && rm -f `echo $FOUND | head -1`
+  compressname="$DIR_BACKUP/$dirname`gdate "+_%Y%m%d" --date="+10 day"`.tgz"
+  tar -czvf $compressname $dir
+done
+
+```
+
+### Utilizar el crontab para ejecutar el programa de backup cada día a las 5 de la mañana
+
+```sh
+echo $(crontab -l ; echo '0 5 * * * /path/to/backup_only_five.sh') | crontab -
+```
