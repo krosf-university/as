@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "frpericacho",
+      "name": "Félix Rodríguez",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/37592976?v=4",
+      "profile": "https://github.com/frpericacho",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "as",
+  "projectOwner": "krosf-university",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
