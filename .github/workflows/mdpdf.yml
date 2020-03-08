@@ -15,11 +15,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: yarn global add mdpdf conventional-changelog-cli
+      - run: yarn add mdpdf conventional-changelog-cli
       - name: Convert to pdf
-        run: mdpdf README.md
+        run: yarn mdpdf README.md
       - name: Generate CHANGELOG.md
-        run: conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+        run: yarn conventional-changelog -p angular -i CHANGELOG.md -s -r 0
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
