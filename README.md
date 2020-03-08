@@ -14,7 +14,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://krosf.com"><img src="https://avatars1.githubusercontent.com/u/24454660?v=4" width="100px;" alt=""/><br /><sub><b>Rodrigo Sanabria</b></sub></a><br /><a href="https://github.com/krosf-university/as/commits?author=KROSF" title="Code">💻</a> <a href="https://github.com/krosf-university/as/commits?author=KROSF" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://krosf.com"><img src="https://avatars2.githubusercontent.com/u/24454660?v=4" width="100px;" alt=""/><br /><sub><b>Rodrigo Sanabria</b></sub></a><br /><a href="https://github.com/krosf-university/as/commits?author=KROSF" title="Code">💻</a> <a href="https://github.com/krosf-university/as/commits?author=KROSF" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/frpericacho"><img src="https://avatars2.githubusercontent.com/u/37592976?v=4" width="100px;" alt=""/><br /><sub><b>Félix Rodríguez</b></sub></a><br /><a href="https://github.com/krosf-university/as/commits?author=frpericacho" title="Code">💻</a> <a href="https://github.com/krosf-university/as/commits?author=frpericacho" title="Documentation">📖</a></td>
   </tr>
 </table>
 
