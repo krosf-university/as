@@ -17,13 +17,13 @@ jobs:
           node-version: "12.x"
       - run: yarn add mdpdf conventional-changelog-cli
       - name: Convert to pdf
-        run: yarn mdpdf README.md
+        run: yarn mdpdf practices/p1/README.md p1.pdf
       - name: Generate CHANGELOG.md
         run: yarn conventional-changelog -p angular -i CHANGELOG.md -s -r 0
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: README.pdf
+          files: p1.pdf
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,8 +35,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add CHANGELOG.md
-          git commit -m "chore: release v{{ steps.get_version.outputs.VERSION }}"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "chore: release v${{ steps.get_version.outputs.VERSION }}"
