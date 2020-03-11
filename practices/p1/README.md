@@ -57,7 +57,7 @@ find / -xdev -perm -4000 -type f 2> /dev/null
 ### Identificar los 3 procesos que se ejecutan con permisos de root que requieren más memoria.
 
 ```sh
-ps -o comm= -m -u root | head -3
+ps -o comm= -u root -U root --sort -pmem | head -3
 ```
 
 ### Monitorizar (con watch) la memoria libre. Deberá de mostrarse cada 10 segundos la actual memoria libre (únicamente ese valor, sin ningún texto adicional).
