@@ -90,10 +90,10 @@ sudo useradd -G root antonio
 
 ### Identificar tres archivos y explicar su contenido.
 
-- `/proc/meminfo`
-  - Nos informa sobre la memoria del sistema
-- `/proc/version`
-  - Nos informa sobre la version actual del kernel, del gcc y la distribucion linux
+- `/proc/modules`
+  - Nos informa sobre los módulos del núcleo que han sido cargados hasta el momento
+- `/proc/net`
+  - Nos informa sobre el estado de los protocolos de red
 - `/proc/filesystems`
   - Nos informa sobre los sistemas de archivos que el kernel soporta
 
@@ -151,8 +151,8 @@ done
 ```sh
 #!/bin/sh
 
-DIR_PATH="$1"
-DIR_BACKUP="$HOME/tests"
+DIR_PATH="/importante"
+DIR_BACKUP="/media/backup"
 
 for dir in `find $DIR_PATH -type d -maxdepth 1 ! -path "."`; do
   dirname=$(basename -- "$dir")
