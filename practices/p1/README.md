@@ -151,8 +151,8 @@ done
 ```sh
 #!/bin/sh
 
-DIR_PATH="$1"
-DIR_BACKUP="$HOME/tests"
+DIR_PATH="/importante"
+DIR_BACKUP="/media/backup"
 
 for dir in `find $DIR_PATH -type d -maxdepth 1 ! -path "."`; do
   dirname=$(basename -- "$dir")
