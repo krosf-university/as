@@ -1,5 +1,10 @@
 # Practica 1
 
+## Integrantes
+
+* Félix Rodriguez Pericacho
+* Carlos Rodrigo Sanabria Flores
+
 ## Crear maquina virtual con vagrant
 
 ```rb
@@ -14,6 +19,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+![vagrant up](screenshots/vagrant-up.png)
+
 ## Comandos Basicos
 
 ### Mostrar todos los archivos txt del sistema.
@@ -22,17 +29,21 @@ end
 find / -name '*.txt'
 ```
 
+![find1](screenshots/find1.png)
+
 ### Modificar el ejercicio anterior para que no se muestren los errores de acceso
 
 ```sh
 find / -name '*.txt' 2> /dev/null
 ```
+![find2](screenshots/find2.png)
 
 ### Mostrar el número de archivos txt del sistema.
 
 ```sh
 find / -name '*.txt' 2> /dev/null | wc -l
 ```
+![find3](screenshots/find3.png)
 
 ### Mostrar cuantos usuarios no pueden iniciar sesión
 
@@ -40,11 +51,14 @@ find / -name '*.txt' 2> /dev/null | wc -l
 grep 'nologin\|false' /etc/passwd -c
 ```
 
+![](screenshots/login.png)
+
 ### Mostrar el tipo de inicio de sesión de los usuarios
 
 ```sh
 awk -F':' '{ print $7 }' /etc/passwd | sort | uniq -c | sort -nr
 ```
+![shell](screenshots/shell.png)
 
 ## Procesos
 
@@ -54,17 +68,21 @@ awk -F':' '{ print $7 }' /etc/passwd | sort | uniq -c | sort -nr
 find / -xdev -perm -4000 -type f 2> /dev/null
 ```
 
+![find4](screenshots/find4.png)
+
 ### Identificar los 3 procesos que se ejecutan con permisos de root que requieren más memoria.
 
 ```sh
 ps -o comm= -u root -U root --sort -pmem | head -3
 ```
+![mem](screenshots/mem.png)
 
 ### Monitorizar (con watch) la memoria libre. Deberá de mostrarse cada 10 segundos la actual memoria libre (únicamente ese valor, sin ningún texto adicional).
 
 ```sh
-watch -n 10 "awk -F':' '/MemFree/ { print \$2 }' /proc/meminfo"
+watch -n 10 -t "awk -F':' '/MemFree/ { print \$2 }' /proc/meminfo"
 ```
+![memfree](screenshots/memfree.png)
 
 ## Gestión de usuarios
 
@@ -99,11 +117,9 @@ sudo useradd -G root antonio
 
 ### Identificar al menos dos archivos que permitan escritura.
 
-- /proc/sys/kernel/hostname
-
+- `/proc/sys/kernel/hostname`
   - Modifica el hostname
-
-- /proc/sys/net/ipv4/ip_forward
+- `/proc/sys/net/ipv4/ip_forward`
   - Modifica el binario ip_forward
 
 ## Bash scripting
