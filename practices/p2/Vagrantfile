@@ -1,6 +1,7 @@
 $script = <<-SHELL
   apt-get update
   apt-get install -y nmap
+  echo "192.168.2.101 vm1\n192.168.2.102 vm2\n192.168.2.103 vm3" >> /etc/hosts
 SHELL
 
 Vagrant.configure("2") do |config|
