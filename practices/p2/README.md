@@ -28,6 +28,11 @@ end
 
 ## Visibilidad de las máquinas 
 
+```sh
+echo "192.168.2.101 vm1\n192.168.2.102 vm2\n192.168.2.103 vm3" >> /etc/hosts
+```
+Veasé también en la linea 4 del Vagrantfile
+
 ## Desde VM2 comprobar los puertos que VM1 tiene abiertos.
 
 ```sh
