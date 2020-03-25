@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
+![GitHub Logo](/images/unknown.png)
 
 ## Visibilidad de las máquinas 
 
