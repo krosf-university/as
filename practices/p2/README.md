@@ -45,7 +45,17 @@ nmap -p- vm1
 sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 ```
 
-### Prohibir el acceso por ssh
+### ¿Qué ha pasado?
+
+La consola ha dejado de funcionar debido a que se ha bloqueado la conexión por ssh.### ¿Puedo crear una nueva conexión?
+
+### ¿Puedo crear una nueva conexión?
+
+No se puede crear
+
+### ¿La consola sigue funcionando?
+
+No sigue funcionando
 
 ## Configuración minima
 
