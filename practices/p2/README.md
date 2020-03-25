@@ -34,17 +34,25 @@ echo "192.168.2.101 vm1\n192.168.2.102 vm2\n192.168.2.103 vm3" >> /etc/hosts
 ```
 Veasé también en la linea 4 del Vagrantfile
 
+![Image of Yaktocat](./Images/unknown2.png)
+
+![Image of Yaktocat](./Images/unknown3.png)
+
 ## Desde VM2 comprobar los puertos que VM1 tiene abiertos.
 
 ```sh
 nmap -p- vm1
 ```
 
+![Image of Yaktocat](./Images/unknown4.png)
+
 ## Prohibir el acceso por ssh
 
 ```sh
 sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 ```
+
+![Image of Yaktocat](./Images/unknown5.png)
 
 ### ¿Qué ha pasado?
 
