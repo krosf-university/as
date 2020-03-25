@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
+![Image of Yaktocat](./Images/unknown.png)
 
 ## Visibilidad de las máquinas 
 
