@@ -45,6 +45,8 @@ nmap -p- vm1
 sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 ```
 
+### Prohibir el acceso por ssh
+
 ## Configuración minima
 
 ```sh
