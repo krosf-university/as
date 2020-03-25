@@ -47,7 +47,7 @@ sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 
 ### ¿Qué ha pasado?
 
-La consola ha dejado de funcionar debido a que se ha bloqueado la conexión por ssh.### ¿Puedo crear una nueva conexión?
+La consola ha dejado de funcionar debido a que se ha bloqueado la conexión por ssh
 
 ### ¿Puedo crear una nueva conexión?
 
