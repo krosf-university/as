@@ -82,3 +82,4 @@ sudo iptables -P INPUT DROP
 sudo iptables -A INPUT -m state --state NEW -p tcp --dport 80 -j ACCEPT
 sudo iptables -A INPUT -m state --state NEW -p tcp --dport 443 -j ACCEPT
 ```
+![Image of Yaktocat](./Images/unknown7.png)
