@@ -1,4 +1,5 @@
 # Practica 2
+## Instalación de máquinas virtuales mediante Vagrant.
 
 ## Desde VM2 comprobar los puertos que VM1 tiene abiertos.
 
