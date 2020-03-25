@@ -74,6 +74,8 @@ sudo iptables -A INPUT -m state --state ESTABLISHED -j ACCEPT
 sudo iptables -P INPUT DROP
 ```
 
+![Image of Yaktocat](./Images/unknown6.png)
+
 ## Servidor HTTP/S
 
 ```sh
