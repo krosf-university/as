@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
-![GitHub Logo](/images/unknown.png)
+![Image of Yaktocat](https://octodex.github.com/images/unknown.png)
 
 ## Visibilidad de las máquinas 
 
