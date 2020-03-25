@@ -26,6 +26,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+## Visibilidad de las máquinas 
+
 ## Desde VM2 comprobar los puertos que VM1 tiene abiertos.
 
 ```sh
