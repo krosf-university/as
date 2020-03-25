@@ -25,7 +25,6 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
-![Image of Yaktocat](D:\Ingenieria_Informatica\2019-2020\Segundo Semestre\AS\Practica\Practica_2\unknown.png)
 
 ## Visibilidad de las máquinas 
 
