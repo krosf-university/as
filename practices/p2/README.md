@@ -90,3 +90,5 @@ sudo iptables -A INPUT -m state --state NEW -p tcp --dport 443 -j ACCEPT
 ## Servidor MySQL
 
 ## Poniendo excepciones 
+
+## UFW 
