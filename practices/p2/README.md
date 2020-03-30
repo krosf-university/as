@@ -114,6 +114,11 @@ sudo iptables -A INPUT -p udp -s vm3 --dport 1:1000 -j ACCEPT
 
 
 ```sh
-
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow from 192.168.2.102 to any port 20
+sudo ufw allow from 192.168.2.102 to any port 21
+sudo ufw allow from 127.0.0.1 to any port 3306
+sudo ufw deny 3306
 ```
 ![Image of Yaktocat](./Images/unknown11.png)
