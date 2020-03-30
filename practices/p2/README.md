@@ -104,7 +104,10 @@ sudo iptables -A INPUT -i lo -p tcp -s vm1 --dport 3306 -j ACCEPT
 
 
 ```sh
-
+sudo iptables -A INPUT -p tcp -s vm2 --dport 1:1000 -j ACCEPT
+sudo iptables -A INPUT -p tcp -s vm3 --dport 1:1000 -j ACCEPT
+sudo iptables -A INPUT -p udp -s vm2 --dport 1:1000 -j ACCEPT
+sudo iptables -A INPUT -p udp -s vm3 --dport 1:1000 -j ACCEPT
 ```
 ![Image of Yaktocat](./Images/unknown10.png)
 ## UFW 
