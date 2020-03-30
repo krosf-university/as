@@ -17,13 +17,13 @@ jobs:
           node-version: "12.x"
       - run: yarn add mdpdf conventional-changelog-cli
       - name: Convert to pdf
-        run: yarn mdpdf practices/p1/README.md p1.pdf
+        run: yarn mdpdf practices/p2/README.md p2.pdf
       - name: Generate CHANGELOG.md
         run: yarn conventional-changelog -p angular -i CHANGELOG.md -s -r 0
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: p1.pdf
+          files: p2.pdf
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
