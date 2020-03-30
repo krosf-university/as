@@ -1,6 +1,8 @@
 # Practica 2
 ## Integrantes
-Felix Rodriguez Pericacho \n
+Felix Rodriguez Pericacho
+
+
 Carlos Rodrigo Sanabria Flores
 
 ## Instalación de máquinas virtuales mediante Vagrant.
