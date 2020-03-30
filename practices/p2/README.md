@@ -86,9 +86,33 @@ sudo iptables -A INPUT -m state --state NEW -p tcp --dport 443 -j ACCEPT
 
 ## Servidor FTP
 
-
+```sh
+sudo iptables -I OUTPUT -p tcp -d 192.168.2.102 --dport 20 -j ACCEPT
+sudo iptables -I OUTPUT -p tcp -d 192.168.2.102 --dport 21 -j ACCEPT
+sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 20 -j ACCEPT
+sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 21 -j ACCEPT
+```
+(./Images/unknown8.png)
 ## Servidor MySQL
+
+
+```sh
+
+```
+
 
 ## Poniendo excepciones 
 
+
+```sh
+
+```
+
+
 ## UFW 
+
+
+```sh
+
+```
+
