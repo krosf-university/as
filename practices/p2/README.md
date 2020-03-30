@@ -99,19 +99,18 @@ sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 21 -j ACCEPT
 ```sh
 
 ```
-
-
+![Image of Yaktocat](./Images/unknown9.png)
 ## Poniendo excepciones 
 
 
 ```sh
 
 ```
-
-
+![Image of Yaktocat](./Images/unknown10.png)
 ## UFW 
 
 
 ```sh
 
 ```
+![Image of Yaktocat](./Images/unknown11.png)
