@@ -92,7 +92,7 @@ sudo iptables -I OUTPUT -p tcp -d 192.168.2.102 --dport 21 -j ACCEPT
 sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 20 -j ACCEPT
 sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 21 -j ACCEPT
 ```
-(./Images/unknown8.png)
+![Image of Yaktocat](./Images/unknown8.png)
 ## Servidor MySQL
 
 
@@ -115,4 +115,3 @@ sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 21 -j ACCEPT
 ```sh
 
 ```
-
