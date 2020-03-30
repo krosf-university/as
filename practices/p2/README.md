@@ -97,7 +97,7 @@ sudo iptables -I INPUT -p tcp -s 192.168.2.102 --dport 21 -j ACCEPT
 
 
 ```sh
-
+sudo iptables -A INPUT -i lo -p tcp -s vm1 --dport 3306 -j ACCEPT
 ```
 ![Image of Yaktocat](./Images/unknown9.png)
 ## Poniendo excepciones 
