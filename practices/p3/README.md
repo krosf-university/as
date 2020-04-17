@@ -52,6 +52,12 @@ Vagrant.configure("2") do |config|
       end
 end
 ```
+![](./cap_as/Captura1.PNG)
 ### Configurar el cortafuegos para que de acceso al exterior.
-![](C:\Users\Felix\Desktop\cap_as)
+![](./cap_as/Captura2.PNG)
+![](./cap_as/Captura5.PNG)
+![](./cap_as/Captura3.PNG)
+![](./cap_as/Captura6.PNG)
+![](./cap_as/Captura7.PNG)
 ### Configurar manualmente los clientes de las redes para que se puedan conectar al servidor.
+![](./cap_as/Captura4.PNG)
