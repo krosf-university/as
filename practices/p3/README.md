@@ -1,7 +1,7 @@
 ## Autores:
-    Felix Rodriguez Pericacho
+   * Felix Rodriguez Pericacho
+   * Carlos Rodrigo Sanabria Flores
 
-    Carlos Rodrigo Sanabria Flores
 ## Instalación de máquinas virtuales mediante Vagrant
 ### Crear el entorno de red mediante un único fichero Vagrant.
 ```rb
