@@ -61,3 +61,50 @@ end
 ![](./cap_as/Captura7.PNG)
 ### Configurar manualmente los clientes de las redes para que se puedan conectar al servidor.
 ![](./cap_as/Captura4.PNG)
+
+## Servidor DHCP 
+
+### Asignacion de Redes
+![](./cap_as/Captura8.PNG)
+
+### Configuración del Servidor
+![](./cap_as/Captura9.PNG)
+
+Primero configuramos el dhcpd.conf, a continuación bastaria con reiniciar el servidor y hacer un status para comprobar que funciona.
+
+Para comprobar que el servidor asigna correctamente las IPs hacemos lo siguiente:
+
+```sh
+cat /var/lib/dhcp/dhcpd.leases
+```
+![](./cap_as/Captura9_2.PNG)
+
+## Servidor DNS 
+
+### Creacion del fichero de zona
+
+![](./cap_as/Captura10.PNG)
+
+A continuacion configuramos la zona:
+
+![](./cap_as/Captura11.PNG)
+
+Ahora pasamos a configurar los records de nuestro servidor:
+
+![](./cap_as/Captura12.PNG)
+
+Reiniciamos el servidor y comprobamos que funciona haciendo un status:
+
+![](./cap_as/Captura13.PNG)
+
+### Configuracion del cliente
+
+Modificamos el archivo resolve.conf para que use el servidor creado:
+
+![](./cap_as/Captura14.PNG)
+
+A continuacion comprobamos que funciona haciendo distintos pings:
+
+![](./cap_as/Captura15.PNG)
+
+![](./cap_as/Captura16.PNG)
