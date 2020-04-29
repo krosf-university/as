@@ -10,6 +10,8 @@
 
 ## [Practice 2](practices/p2/README.md)
 
+## [Practice 3](practices/p3/README.md)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
