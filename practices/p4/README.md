@@ -106,6 +106,46 @@ Dejandonos con la siguiente web:
 
 ## Caché
 
+Primero descargamos una imagen en la maquina mediante:
+
+```rb
+sudo curl -LO https://raw.githubusercontent.com/krosf-university/as/master/practices/p4/img/Captura.PNG
+```
+
+A continuacion en la web podemos ver que la imagen proviene de la caché al inspeccionar las propiedades de esta:
+
+![Captura 2](./img/Captura12.PNG)
+
+A continuacion podemos ver con mas detalle cuando la imagen a sido cacheada y cuando no:
+
+![Captura 2](./img/Captura13.PNG)
+
 ## Redirección
+
+### JPEG
+
+Pasamos a reconfigurar el archivo manolorg.conf para que cuando se le pida buscar un archivo jpeg busque uno jpg:
+
+![Captura 2](./img/Captura14.PNG)
+
+### Condicion JPEG
+
+Como podemos ver en la imagen anterior mediante el flag 
+
+```rb
+      RewriteCond %{REQUEST_FILENAME} !-f
+```
+
+Podemos cumplir la condicion para que solo rediriga si el jpeg no existe.
+
+### Redireccion PHP
+
+Para redirigir hasta personalWeb.php?user=CoboMJ debemos modificar el archivo manolorg.conf añadiendo las siguientes reglas:
+
+![Captura 2](./img/Captura16.PNG)
+
+Y aqui un ejemplo de como capturar los parametros $_GET en php:
+
+![Captura 2](./img/Captura15.PNG)
 
 ## Balanceo de carga
