@@ -149,3 +149,19 @@ Y aqui un ejemplo de como capturar los parametros $_GET en php:
 ![Captura 2](./img/Captura15.PNG)
 
 ## Balanceo de carga
+
+Primero creamos las maquinas que necesitamos con su index.html para comprobar que se esta utilizando dicha maquina, y a continuacion configuramos el balanceo de carga:
+
+![Captura 2](./img/Captura20.PNG)
+
+Una vez configurado podemos comprobar el rendimiento que obtenemos con y sin el balanceo de carga:
+
+Sin balanceo de carga:
+
+![Captura 2](./img/Captura18.PNG)
+
+Con balanceo de carga:
+
+![Captura 2](./img/Captura19.PNG)
+
+Como podemos apreciar es mas eficiente el uso del balanceo de carga.
