@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-manolorg = <<-APACHE
+manolorg = <<-CONF
 <VirtualHost 192.168.22.22:80>
   ServerAdmin manolorg@uca.es
   ServerName manolorg.uca.es
@@ -64,12 +64,11 @@ manolorg = <<-APACHE
 
   ProxyPass "/" "balancer://ClusterManolo"
 
-
 </VirtualHost>
-APACHE
+CONF
 
 def lab(number)
-  return <<-APACHE
+  return <<-CONF
   <VirtualHost 192.168.22.22:80>
     ServerAdmin lab#{number}.manolorg@uca.es
     ServerName lab#{number}.manolorg.uca.es
@@ -81,7 +80,7 @@ def lab(number)
       Options -Indexes
     </Directory>
   </VirtualHost>
-  APACHE
+  CONF
 end
 
 passwd = <<-PASSWD
@@ -89,22 +88,20 @@ admin:$apr1$lFrvNnRa$jWBbUXWITX24vd1Mz86lz/
 manolo:$apr1$cW9gAjUM$Zf1XZBAsDcj1HJfri7Tt3.
 PASSWD
 
-pesonalWeb = <<-PHP
-  <!DOCTYPE html>
-  <html lang="en">
+pesonalWeb = <<-HTML
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team</title>
   </head>
   <body style="min-height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;">
-  <h1>Bienvenido</h1>
-  <h2><?= $_GET["user"] ?></h2>
+    <h1>Bienvenido</h1>
+    <h2><?= $_GET["user"] ?></h2>
   </body>
-  </html>
-<?php
-$user = $_GET["user"];
-PHP
+</html>
+HTML
 
 def gen_index(title,body)
   return <<-HTML
@@ -127,10 +124,10 @@ Vagrant.configure("2") do |config|
     node.vm.hostname = "apache"
     node.vm.network "private_network", ip: "192.168.22.22"
     node.vm.provider "virtualbox" do |vb|
-       vb.name = "apache"
-       vb.gui = false
-       vb.cpus = 2
-       vb.memory = 512
+      vb.name = "apache"
+      vb.gui = false
+      vb.cpus = 2
+      vb.memory = 512
     end
     node.vm.provision "shell", inline: <<-SHELL
       apt-get update
@@ -150,55 +147,53 @@ Vagrant.configure("2") do |config|
       a2enmod rewrite
       systemctl reload apache2
     SHELL
- end
+  end
 
   config.vm.define "vm1" do |node|
     node.vm.hostname = "vm1"
     node.vm.network "private_network", ip: "192.168.22.23"
     node.vm.provider "virtualbox" do |vb|
-       vb.name = "vm1"
-       vb.memory = 512
-       vb.cpus = 1
-       vb.gui = false
+      vb.name = "vm1"
+      vb.memory = 512
+      vb.cpus = 1
+      vb.gui = false
     end
     node.vm.provision "shell", inline: <<-SHELL
       apt-get update
       apt-get install -y apache2 php libapache2-mod-php apache2-utils
       echo \'#{gen_index("VM1","<h1>VM1</h1>")}\' > /var/www/html/index.html
     SHELL
- end
+  end
 
- config.vm.define "vm2" do |node|
+  config.vm.define "vm2" do |node|
     node.vm.hostname = "vm2"
     node.vm.network "private_network", ip: "192.168.22.24"
     node.vm.provider "virtualbox" do |vb|
-       vb.name = "vm2"
-       vb.memory = 512
-       vb.cpus = 1
-       vb.gui = false
+      vb.name = "vm2"
+      vb.memory = 512
+      vb.cpus = 1
+      vb.gui = false
     end
     node.vm.provision "shell", inline: <<-SHELL
       apt-get update
       apt-get install -y apache2 php libapache2-mod-php apache2-utils
       echo \'#{gen_index("VM2","<h1>VM2</h1>")}\' > /var/www/html/index.html
     SHELL
- end
+  end
 
- config.vm.define "vm3" do |node|
+  config.vm.define "vm3" do |node|
     node.vm.hostname = "vm3"
     node.vm.network "private_network", ip: "192.168.22.25"
     node.vm.provider "virtualbox" do |vb|
-       vb.name = "vm3"
-       vb.memory = 512
-       vb.cpus = 1
-       vb.gui = false
+      vb.name = "vm3"
+      vb.memory = 512
+      vb.cpus = 1
+      vb.gui = false
     end
     node.vm.provision "shell", inline: <<-SHELL
       apt-get update
       apt-get install -y apache2 php libapache2-mod-php apache2-utils
-      echo \'#{gen_index("VM2","<h1>VM2</h1>")}\' > /var/www/html/index.html
+      echo \'#{gen_index("VM3","<h1>VM3</h1>")}\' > /var/www/html/index.html
     SHELL
- end
-
-  
+    end
 end
