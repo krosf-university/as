@@ -8,6 +8,29 @@ def hosts(index)
   return "192.168.2.101 vm1\n192.168.2.102 vm2"
 end
 
+def fun(index)
+  if index == 1
+    return <<-FUNCION
+      iptables -I OUTPUT -p tcp -d 192.168.2.102 --dport 20 -j ACCEPT
+      iptables -I OUTPUT -p tcp -d 192.168.2.102 --dport 21 -j ACCEPT
+      iptables -I INPUT -p tcp -s 192.168.2.102 --dport 20 -j ACCEPT
+      iptables -I INPUT -p tcp -s 192.168.2.102 --dport 21 -j ACCEPT
+      iptables -A INPUT -i lo -p tcp -s vm1 --dport 3306 -j ACCEPT
+      iptables -A INPUT -p tcp -s vm2 --dport 1:1000 -j ACCEPT 
+      iptables -A INPUT -p udp -s vm2 --dport 1:1000 -j ACCEPT 
+      iptables -A INPUT -p tcp -s vm3 --dport 1:1000 -j ACCEPT
+      iptables -A INPUT -p udp -s vm3 --dport 1:1000 -j ACCEPT
+      ufw allow http
+      ufw allow https
+      ufw allow from 192.168.2.102 to any port 20
+      ufw allow from 192.168.2.102 to any port 21
+      ufw allow from 127.0.0.1 to any port 3306
+      ufw deny 3306
+    FUNCION
+  end
+  return ""
+end
+
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.provision "shell", inline: $script
@@ -19,6 +42,12 @@ Vagrant.configure("2") do |config|
         apt-get update
         apt-get install -y nmap
         echo \'#{hosts(i)}\' >> /etc/hosts
+        iptables -A INPUT -i lo -j ACCEPT
+        iptables -A INPUT -m state --state ESTABLISHED -j ACCEPT
+        iptables -P INPUT DROP
+        iptables -A INPUT -m state --state NEW -p tcp --dport 80 -j ACCEPT
+        iptables -A INPUT -m state --state NEW -p tcp --dport 443 -j ACCEPT
+        #{fun(i)}
       SHELL
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vm#{i}"
