@@ -1,8 +1,12 @@
-$script = <<-SHELL
-  apt-get update
-  apt-get install -y nmap
-  echo "192.168.2.101 vm1\n192.168.2.102 vm2\n192.168.2.103 vm3" >> /etc/hosts
-SHELL
+def hosts(index)
+  if index == 1
+    return "192.168.2.102 vm2\n192.168.2.103 vm3"
+  end
+  if index == 2
+    return "192.168.2.101 vm1\n192.168.2.103 vm3"
+  end
+  return "192.168.2.101 vm1\n192.168.2.102 vm2"
+end
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
@@ -11,6 +15,11 @@ Vagrant.configure("2") do |config|
     config.vm.define "vm#{i}" do |node|
       node.vm.hostname = "vm#{i}"
       node.vm.network "private_network", ip: "192.168.2.10#{i}"
+      node.vm.provision "shell", inline: <<-SHELL
+        apt-get update
+        apt-get install -y nmap
+        echo \'#{hosts(i)}\' >> /etc/hosts
+      SHELL
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vm#{i}"
         vb.memory = 512
